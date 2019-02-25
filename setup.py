@@ -13,7 +13,7 @@ setup(
         "This module allows for easy conversion to and from JSON",
         "format for common python3 dataclasses"
     ),
-    long_description=open('README.txt').read(),
+    long_description=open('README.md').read(),
     author='Ingresso',
     author_email='systems@ingresso.co.uk',
     install_requires=[
