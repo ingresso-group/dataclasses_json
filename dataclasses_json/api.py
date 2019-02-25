@@ -6,8 +6,8 @@ from typing import Any, Callable, List, Optional, Tuple, TypeVar, Union
 
 from marshmallow import Schema, post_load
 
-from ingresso_dataclasses.parser import mm
-from ingresso_dataclasses.parser.core import (
+from dataclasses_json import mm
+from dataclasses_json.core import (
     _ExtendedEncoder, _asdict, _decode_dataclass,
     _overrides, _issubclass_safe, _override
 )

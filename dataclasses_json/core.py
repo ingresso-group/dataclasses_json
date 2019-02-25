@@ -17,7 +17,7 @@ from dataclasses import (
     is_dataclass
 )
 
-from ingresso_dataclasses.parser.utils import (
+from dataclasses_json.utils import (
     _get_type_cons,
     _is_collection,
     _is_mapping,

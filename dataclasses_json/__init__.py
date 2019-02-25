@@ -1,4 +1,4 @@
-from dataclasses_json.parser.api import (
+from dataclasses_json.api import (
     DataClassJsonMixin,
     dataclass_json
 )
