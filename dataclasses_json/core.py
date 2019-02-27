@@ -80,8 +80,13 @@ def _override(obj, attr):
 
     for k, v in as_dict.items():
         this_obj = getattr(obj, k)
-        if isinstance(this_obj, (list, tuple)):
+        if _isinstance_safe(this_obj, (list, tuple)):
             override_kvs[k] = [_override(o, attr) for o in this_obj]
+        if _isinstance_safe(this_obj, dict):
+            override_kvs[k] = {
+                    k: _override(v, attr)
+                    for k, v in this_obj.items()
+                    }
         elif is_dataclass(this_obj):
             override_kvs[k] = _override(this_obj, attr)
         else:
