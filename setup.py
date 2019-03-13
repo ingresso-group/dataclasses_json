@@ -15,6 +15,9 @@ setup(
     author_email='systems@ingresso.co.uk',
     install_requires=[
         'python-dateutil>=2.8.0',
-        'marshmallow>=2.18.1'
+        'marshmallow==2.18.1'
     ],
+    extras_require={
+        "dev": ["pytest", "mypy"]
+    },
 )
