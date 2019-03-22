@@ -52,6 +52,10 @@ class _ExtendedEncoder(json.JSONEncoder):
 
 def _overrides(dc):
     overrides = {}
+
+    if not is_dataclass(dc):
+        return overrides
+
     attrs = ['encoder', 'decoder', 'mm_field']
     FieldOverride = namedtuple('FieldOverride', attrs)
     for field in fields(dc):
@@ -77,6 +81,12 @@ def _override(obj, attr):
 
     override_kvs = {}
     as_dict = _asdict(obj)
+
+    # if as_dict returns anything else
+    # than dict we just want to return
+    # a value here as it is not iterable.
+    if not isinstance(as_dict, dict):
+        return obj
 
     for k, v in as_dict.items():
         this_obj = getattr(obj, k)
