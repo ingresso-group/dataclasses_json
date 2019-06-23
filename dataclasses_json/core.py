@@ -46,7 +46,7 @@ class _ExtendedEncoder(json.JSONEncoder):
             result = str(o)
         elif _isinstance_safe(o, Enum):
             result = o.value
-        elif is_dataclass_instance(o)
+        elif _is_dataclass_instance(o):
             result = asdict(o)
         else:
             result = json.JSONEncoder.default(self, o)
