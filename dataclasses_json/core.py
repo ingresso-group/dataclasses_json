@@ -14,7 +14,8 @@ from dataclasses import (
     MISSING,
     _is_dataclass_instance,
     fields,
-    is_dataclass
+    is_dataclass,
+    asdict
 )
 
 from dataclasses_json.utils import (
@@ -45,6 +46,8 @@ class _ExtendedEncoder(json.JSONEncoder):
             result = str(o)
         elif _isinstance_safe(o, Enum):
             result = o.value
+        elif _is_dataclass_instance(o):
+            result = asdict(o)
         else:
             result = json.JSONEncoder.default(self, o)
         return result
