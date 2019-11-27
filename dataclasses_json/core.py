@@ -264,4 +264,4 @@ def _asdict(obj):
     elif isinstance(obj, Collection) and not isinstance(obj, str):
         return list(_asdict(v) for v in obj)
     else:
-        return copy.deepcopy(obj)
+        return obj
