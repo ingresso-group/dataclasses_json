@@ -256,11 +256,11 @@ def _asdict(obj):
     if _is_dataclass_instance(obj):
         result = []
         for f in fields(obj):
-            value = _asdict(getattr(obj, f.name))
+            value = getattr(obj, f.name)
             result.append((f.name, value))
         return dict(result)
     elif isinstance(obj, Mapping):
-        return dict((_asdict(k), _asdict(v)) for k, v in obj.items())
+        return dict((_asdict(k), v) for k, v in obj.items())
     elif isinstance(obj, Collection) and not isinstance(obj, str):
         return list(_asdict(v) for v in obj)
     else:
